@@ -77,7 +77,6 @@ myApp.controller("FirstCtrl",function($scope,$http,$templateCache){
             /**
              * push to matrix with col
              */
-
             var num2 = temp.length;
             if(num2<10){
             r = Math.floor(Math.random()*($scope.row-num2));
