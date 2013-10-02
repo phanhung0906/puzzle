@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Word search puzzle</title>
+    <meta charset=utf-8 />
+    <link rel="stylesheet" href="asset/vendor/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="asset/vendor/jquery/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="asset/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script type="text/javascript" src="asset/js/puzzle.js"></script>
+<style>
+    .done{
+        text-decoration: line-through;
+        color:#D8DFEA;
+    }
+</style>
+</head>
+<body ng-app="myApp" ng-controller="FirstCtrl" ng-init="init()" >
+    <div class="navbar navbar-default">
+        <div class="navbar-inner">
+            <div class="container">
+                <h3>Word search puzzle</h3>
+            </div>
+        </div>
+    </div>
+    <div  class="container" >
+
+        <div class="col-md-4">
+        <ul >
+            <li class="media-list" ng-repeat="key in currentKeys"><h4 ng-class="{'done': key.done}">{{key.name}}</h4></li>
+        </ul>
+        <button class="btn btn-primary col-md-4" ng-click="resultBtn()">Result</button>
+        </div>
+
+        <table class="col-md-4 table-bordered" cellspacing="0">
+            <tbody>
+            <tr ng-repeat="row in words" data-id="{{$index}}">
+                <td ng-repeat="word in row.num" class="text-center value" ng-bind="word" ng-mouseup="mouseup()" ng-mousedown="mousedown()" data-id="{{$index}}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div >
+    <script>
+//    function disableselect(e){
+//        return false
+//    }
+//    function reEnable(){
+//        return true
+//    }
+    //if IE4+
+    document.onselectstart = new Function ("return false")
+    //if NS6
+//    if (window.sidebar){
+//        document.onmousedown = disable-select
+//        document.onclick = reEnable
+//    }
+    </script>
+</body>
+</html>
